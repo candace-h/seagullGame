@@ -1,0 +1,122 @@
+//TO DO 
+//make an array of arrays for world and sky theme
+//make a seagull class
+//  - class objects take input and reutrn a value 
+//make function to increment position of seagulls
+// - use % for circular motion?
+// increment position of sky
+//learn user interaction -- mouse click poop
+
+
+
+
+
+
+// let angle = 0;
+
+let ocean;
+let sky;
+let hedges;
+let disco;
+
+function preload(){
+  ocean = loadImage("ocean.jpg");
+  sky = loadImage('sky.jpg');
+  hedges = loadImage('hedges.jpg');
+  disco = loadImage("rainbowdisco.jpg");
+  lightz = loadImage("lights.avif");
+}
+
+function setup() {
+  createCanvas(650, 400, WEBGL);
+}
+
+function draw() {
+  background(220,240,255);
+  ambientLight(255,2000,2000,0);
+  
+  
+  wall();
+
+  fill(255);
+
+  gull(0,-60,-800);
+  gull(100,-20,-400);
+  gull(-100,-20,-400)
+  gull(-150,20,0);
+  gull(150,20,0);
+  gull(-200,40,200);
+  gull(200,40,200);
+  
+  
+  earth();
+  orbitControl(4,4);
+
+}
+
+function wall(){
+  push();
+  noStroke();
+  translate(0,200,-1000);
+ //texture(ocean);
+  ambientMaterial(0,255,0);
+  plane(2000,1500);
+  pop();
+}
+
+function earth() {
+  push();
+  noStroke();
+  //fill(0,180,190);
+  ambientMaterial(100,255,255);
+  //texture(hedges);
+  translate(0,height+520);
+  sphere(900,24,24);
+  pop();
+  
+}
+
+//class GULL{
+  
+
+
+ function gull(x,y,z){
+  
+ 
+  push();
+   translate(x,y,z);
+  strokeWeight(1);
+  noStroke();
+  
+  //head&body
+   ellipse(0,-3.5,12,10);
+   //tail
+  triangle(0,-5,-7,+8,+7,+8);
+  
+   //fill(210),
+     ellipse(0,0,12,11);
+ ellipse(0,-4,18,6);
+  
+  //rightwing
+  //fill(210),
+  beginShape();
+  vertex(+5,0);
+  quadraticVertex(+10,-18,+70,0);
+  quadraticVertex(+14,-6,+5,0);
+  endShape();
+  //leftwing
+  beginShape();
+  vertex(-5,0);
+  quadraticVertex(-10,-18,-70,0);
+  quadraticVertex(-14,-6,-5,0);
+  endShape();
+  fill(255);
+   pop();
+  }
+  
+//}
+
+// function tilt(){
+//     rotateY(angle);
+//   angle += 100;
+// }
